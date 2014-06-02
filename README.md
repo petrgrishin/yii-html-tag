@@ -21,7 +21,7 @@ Usage examples
 use \PetrGrishin\HtmlTag\HtmlTag;
 
 $tag = HtmlTag::create(HtmlTag::TAG_DIV, array('class' => 'content'))->begin();
-$tag->addClass('well);
+$tag->addClass('well');
 
 printf('content');
 
