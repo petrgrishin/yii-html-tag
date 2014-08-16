@@ -23,7 +23,7 @@ use \PetrGrishin\HtmlTag\HtmlTag;
 $tag = HtmlTag::create(HtmlTag::TAG_DIV, array('class' => 'content'))->begin();
 $tag->addClass('well');
 
-printf('content');
+print('content');
 
 $tag->end();
 // output: <div class="content well">content</div>
