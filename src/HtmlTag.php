@@ -17,11 +17,11 @@ class HtmlTag {
     private $content;
 
     /**
-     * @param $tagName
-     * @param $htmlOptions
-     * @return HtmlTag
+     * @param string $tagName
+     * @param array $htmlOptions
+     * @return static
      */
-    static function create($tagName = self::TAG_DIV, array $htmlOptions = array()) {
+    public static function create($tagName = self::TAG_DIV, array $htmlOptions = array()) {
         /** @var $htmlTag HtmlTag */
         $htmlTag = new static();
 
@@ -98,31 +98,23 @@ class HtmlTag {
         return $this;
     }
 
-    /**
-     * @param $name
-     * @param $value
-     * @return $this
-     * @throws Exception\HtmlTagException
-     */
     public function addAttr($name, $value) {
-        if (!isset($value)) {
-            throw new Exception\HtmlTagException("value is not setted for attr `{$name}`");
-        }
-        return $this->attr($name, $value);
+        return $this->setAttr($name, $value);
     }
 
-    /**
-     * @param $name
-     * @param null $value
-     * @return $this
-     */
-    public function attr($name, $value = null) {
+    public function setAttr($name, $value) {
         if (!isset($value)) {
-            return $this->htmlOptions[$name];
+            throw new Exception\HtmlTagException("Value is not set for attr `{$name}`");
         }
         $this->htmlOptions[$name] = $value;
         return $this;
+    }
 
+    public function getAttr($name) {
+        if (!array_key_exists($name, $this->htmlOptions)) {
+            throw new Exception\HtmlTagException(sprintf('Attr `%s` not exists', $name));
+        }
+        return $this->htmlOptions[$name];
     }
 
     /**
