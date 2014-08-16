@@ -9,7 +9,7 @@ Add a dependency to your project's composer.json:
 ```json
 {
     "require": {
-        "petrgrishin/yii-html-tag": "dev-master"
+        "petrgrishin/yii-html-tag": "~1.0"
     }
 }
 ```
